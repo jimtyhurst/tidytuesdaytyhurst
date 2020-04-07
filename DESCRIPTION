@@ -7,7 +7,7 @@ Authors@R:
            role = c("aut", "cre"),
            email = "jim@tyhurst.com",
            comment = c(ORCID = "0000-0001-7494-3632"))
-Description: What the package does (one paragraph).
+Description: Analyses of some of the Tidy Tuesday datasets.
 License: file LICENSE
 Encoding: UTF-8
 LazyData: true
