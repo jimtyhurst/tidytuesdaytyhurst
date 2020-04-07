@@ -12,7 +12,7 @@ License: file LICENSE
 Encoding: UTF-8
 LazyData: true
 Imports:
-    burro (>= 0.1.0)
+    burro (>= 0.1.0),
     dplyr (>= 0.8.5),
     ggplot2 (>= 3.3.0),
     httr (>= 1.4.1),

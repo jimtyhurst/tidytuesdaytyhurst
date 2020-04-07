@@ -23,7 +23,7 @@ knitr::opts_chunk$set(echo = TRUE)
 
 ## Install the needed packages
 
-```{r}
+```{r install_packages}
 #install.packages("remotes")
 #remotes::install_github("thebioengineer/tidytuesdayR")
 
@@ -33,39 +33,49 @@ knitr::opts_chunk$set(echo = TRUE)
 
 ## Look at the available datasets
 
-```{r}
+```{r list_available_datasets}
 library(tidytuesdayR)
 # This will open up in the help window:
-tidytuesdayR::tt_available()
+#tidytuesdayR::tt_available()
 ```
 
 ## Load the dataset
 
 Load your dataset in with the function below. The input is the date the dataset was issued. You should be able to get this from the `tt_available()` function.
 
-```{r}
+```{r load_datasets}
+# Warning: This takes a long time ...
 # Incoming data comes in as a list
 datasets <- tidytuesdayR::tt_load("2020-01-14")
 # Show the names of the individual datasets
 names(datasets)
+```
+
+```{r extract_dataset}
 dataset <- datasets$passwords
 ```
 
 To explore the data quickly, use [burro](https://github.com/laderast/burro), which opens a web app for browsing the data:
 
-```{r}
+```{r browse_tuition_cost}
 library(burro)
+library(ggplot2)
 burro::explore_data(dataset,outcome_var = NULL)
 ```
 
-```{r}
+```{r dim_dataset}
 dim(dataset)
 ```
 
-```{r}
+```{r colnames_dataset}
 colnames(dataset)
 ```
 
+```{r exploratory_data_analysis}
+library(dplyr)
+# your code here ...
+
+```
 
 ## Questions to explore with this data
 
@@ -75,7 +85,7 @@ Given your inital exploration of the data, what was the question you wanted to a
 
 Put your findings and your visualization code here.
 
-```{r}
+```{r findings}
 
 ```
 

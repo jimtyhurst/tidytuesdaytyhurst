@@ -31,7 +31,7 @@ knitr::opts_chunk$set(echo = TRUE)
 
 ## Install the needed packages
 
-```{r}
+```{r install_packages}
 #install.packages("remotes")
 #remotes::install_github("thebioengineer/tidytuesdayR")
 
@@ -41,7 +41,7 @@ knitr::opts_chunk$set(echo = TRUE)
 
 ## Look at the available datasets
 
-```{r}
+```{r list_available_datasets}
 library(tidytuesdayR)
 # This will open up in the help window:
 #tidytuesdayR::tt_available()
@@ -51,42 +51,46 @@ library(tidytuesdayR)
 
 Load your dataset in with the function below. The input is the date the dataset was issued. You should be able to get this from the `tt_available()` function.
 
-```{r}
-library(dplyr)
+```{r load_datasets}
+# Warning: This takes a long time ...
 # Incoming data comes in as a list
 datasets <- tidytuesdayR::tt_load('2020-03-10')
 # Show the names of the individual datasets
 names(datasets)
+```
+
+```{r tuition_cost}
 df <- datasets$tuition_cost
 ```
 
 To explore the data quickly, use [burro](https://github.com/laderast/burro), which opens a web app for browsing the data:
 
-```{r}
+```{r browse_tuition_cost}
 library(burro)
 library(ggplot2)
-burro::explore_data(df,outcome_var = NULL)
+#burro::explore_data(df,outcome_var = NULL)
 ```
 
-```{r}
+```{r dim_tuition_cost}
 dim(df)
 ```
 
-```{r}
+```{r colnames_tuition_cost}
 colnames(df)
 ```
 
-```{r}
+```{r univ_name}
 head(df$name)
 ```
 
-```{r}
+```{r state_cols}
+library(dplyr)
 df %>% 
   dplyr::select(state, state_code, type) %>% 
   head()
 ```
 
-```{r}
+```{r tuition_cols}
 df %>% 
   dplyr::select(
     in_state_tuition, 
@@ -105,7 +109,7 @@ Given your inital exploration of the data, what was the question you wanted to a
 
 Put your findings and your visualization code here.
 
-```{r}
+```{r findings}
 
 ```
 
