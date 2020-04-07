@@ -1,0 +1,121 @@
+---
+title: "Tuition Cost"
+author: "[Jim Tyhurst, Ph.D.](https://www.jimtyhurst.com/)"
+date: "`r Sys.Date()`"
+output:
+  github_document:
+    toc: true
+    hard_line_breaks: FALSE
+  html_document:
+    toc: true
+    code_folding: hide
+numbersections: true
+vignette: >
+  %\VignetteIndexEntry{COVID_19_Confirmed_Cases}
+  %\VignetteEncoding{UTF-8}
+  %\VignetteEngine{knitr::rmarkdown}
+  \usepackage[utf8]{inputenc}
+---
+
+## TODO
+
+* Read `salary_potential` data.
+* Combine `salary_potential` and `tuition_cost` into a single `tbl`.
+* Can the `salary_potential` variables `mid_career_pay` and `make_world_better_percent` be predicted from `tuition_cost` variables, such as `type`, `in_state_total`, and `out_of_state_total`?
+* Is `salary_potential$stem_percent` correlated with public vs private `type` of school?
+
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Install the needed packages
+
+```{r}
+#install.packages("remotes")
+#remotes::install_github("thebioengineer/tidytuesdayR")
+
+# Optional package for browsing:
+#remotes::install_github("laderast/burro")
+```
+
+## Look at the available datasets
+
+```{r}
+library(tidytuesdayR)
+# This will open up in the help window:
+#tidytuesdayR::tt_available()
+```
+
+## Load the dataset
+
+Load your dataset in with the function below. The input is the date the dataset was issued. You should be able to get this from the `tt_available()` function.
+
+```{r}
+library(dplyr)
+# Incoming data comes in as a list
+datasets <- tidytuesdayR::tt_load('2020-03-10')
+# Show the names of the individual datasets
+names(datasets)
+df <- datasets$tuition_cost
+```
+
+To explore the data quickly, use [burro](https://github.com/laderast/burro), which opens a web app for browsing the data:
+
+```{r}
+library(burro)
+library(ggplot2)
+burro::explore_data(df,outcome_var = NULL)
+```
+
+```{r}
+dim(df)
+```
+
+```{r}
+colnames(df)
+```
+
+```{r}
+head(df$name)
+```
+
+```{r}
+df %>% 
+  dplyr::select(state, state_code, type) %>% 
+  head()
+```
+
+```{r}
+df %>% 
+  dplyr::select(
+    in_state_tuition, 
+    in_state_total, 
+    out_of_state_tuition, 
+    out_of_state_total
+  ) %>% 
+  head()
+```
+
+## Questions to explore with this data
+
+Given your inital exploration of the data, what was the question you wanted to answer?
+
+## Findings
+
+Put your findings and your visualization code here.
+
+```{r}
+
+```
+
+## Lessons learned
+
+Were there any lessons you learned? Any cool packages you want to talk about?
+
+## References
+[Source code](./tuition_cost.Rmd).
+
+The overall flow of this R markdown file is based on the [template.Rmd](https://github.com/pdxrlang/tidy_tuesday_template/blob/master/template.Rmd) file in the [pdxrlang/tidy_tuesday_template](https://github.com/pdxrlang/tidy_tuesday_template/) project.
+
+Dataset: [College tuition, diversity, and pay](https://github.com/rfordatascience/tidytuesday/tree/master/data/2020/2020-03-10).
